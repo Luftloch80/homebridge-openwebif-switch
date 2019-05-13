@@ -192,7 +192,7 @@ OpenWebifSwitchAccessory.prototype = {
 			command = Openwebif.RemoteKey.PLAY_PAUSE;;
 			break;
 			case Characteristic.RemoteKey.INFORMATION:
-			command = Openwebif.RemoteKey.PLAY_PAUSE;;
+			command = Openwebif.RemoteKey.INFORMATION;;
 			// using menu button here.
 			break;
 		}
