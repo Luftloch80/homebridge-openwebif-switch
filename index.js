@@ -113,7 +113,7 @@ OpenWebifSwitchAccessory.prototype = {
 		if (this.bouquets == undefined || this.bouquets == null || this.bouquets.length <= 0 || Array.isArray(this.bouquets) == false) {
 			this.log.error("no Bouquet list or not an array");
 			this.openwebif._printBouquets()
-			return this.inputServices;
+			return;
 		}
 
 		// TODO load persisted Names
