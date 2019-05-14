@@ -93,11 +93,11 @@ OpenWebifSwitchAccessory.prototype = {
 	
 	generateInputServices : function() {
 
-		if (this.bouquets == undefined || this.bouquets == null || this.bouquets.length <= 0 || Array.isArray(this.bouquets) == false) {
+	/*	if (this.bouquets == undefined || this.bouquets == null || this.bouquets.length <= 0 || Array.isArray(this.bouquets) == false) {
 			this.log.error("no Bouquet list or not an array");
 			this.openwebif._printBouquets()
 			return;
-		}
+		}*/
 
 		// TODO load persisted Names
 
