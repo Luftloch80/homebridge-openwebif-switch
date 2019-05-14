@@ -7,7 +7,7 @@ Original: https://github.com/alex224/homebridge-openwebif-switch
 # Installation
 
 1. Install homebridge using: npm install -g homebridge
-2. Install homebridge-openwebif-switch using: npm install -g git+https://github.com/alex224/homebridge-openwebif-switch
+2. Install homebridge-openwebif-switch using: npm install -g git+https://github.com/Luftloch80/homebridge-openwebif-switch
 3. Update your configuration file. See sample-config.json in this repository for a sample. 
 
 # Configuration
@@ -19,9 +19,6 @@ Original: https://github.com/alex224/homebridge-openwebif-switch
             "name": "Receiver Standby",
             "host": "vusolo2",
             <i>"port": 80,</i>
-            <i>"checkIntervalSeconds": 120,</i>
-            <i>"includeIP" : true,</i>
-            <i>"excludeSpeakerService" : false</i>
         }
     ]
 </pre>
