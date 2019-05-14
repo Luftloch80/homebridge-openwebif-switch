@@ -127,6 +127,8 @@ Openwebif.prototype.setMute =  function (value, callback) {
   });
 }
 
+
+
 Openwebif.prototype.getPowerState =  function (callback) {
   var me = this;
   this._httpXMLGetForMethod("/web/powerstate", function (error,data) {
@@ -142,6 +144,8 @@ Openwebif.prototype.getPowerState =  function (callback) {
   });
 },
 
+
+
 Openwebif.prototype.setVolume =  function (value, callback) {
   var me = this;
   var targetValue = parseInt(value);
@@ -156,6 +160,7 @@ Openwebif.prototype.setVolume =  function (value, callback) {
     }
   });
 },
+
 Openwebif.prototype.setPowerState = function (powerOn, callback) {
   powerOn = powerOn ? true : false; //number to boolean
   var me = this;
@@ -297,5 +302,7 @@ Openwebif.RemoteKey.BACK = 174; // exit;
 Openwebif.RemoteKey.EXIT = 174;
 Openwebif.RemoteKey.PLAY_PAUSE = 164;
 Openwebif.RemoteKey.INFORMATION = 139; // menu button
+Openwebif.RemoteKey.INCREMENT = 115;
+Openwebif.RemoteKey.DECREMENT = 114;
 
 module.exports =  Openwebif;

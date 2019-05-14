@@ -93,12 +93,16 @@ OpenWebifSwitchAccessory.prototype = {
 		}
 		return this.tvService;
 	},
+	
 	generateSpeakerService : function() {
 		this.speakerService = new Service.TelevisionSpeaker(this.name);
 		this.speakerService
 		.getCharacteristic(Characteristic.Volume)
 		.on('get', this.openwebif.getVolume.bind(this.openwebif))
 		.on('set', this.openwebif.setVolume.bind(this.openwebif));
+		this.speakerService
+              .getCharacteristic(Characteristic.VolumeSelector) //increase/decrease volume
+              .on('set', this.VolumeSelectorPress.bind(this));
 		this.speakerService
 		.getCharacteristic(Characteristic.Mute)
 		.on('get', this.openwebif.getMute.bind(this.openwebif))
@@ -108,6 +112,8 @@ OpenWebifSwitchAccessory.prototype = {
 
 		return this.speakerService;
 	},
+
+	
 	generateInputServices : function() {
 
 		if (this.bouquets == undefined || this.bouquets == null || this.bouquets.length <= 0 || Array.isArray(this.bouquets) == false) {
@@ -148,6 +154,19 @@ OpenWebifSwitchAccessory.prototype = {
 			this.openwebif._printBouquets()
 		}
 		return this.inputServices;
+	},
+	VolumeSelectorPress : function(remoteKey, callback) {
+		this.log('webOS - remote key pressed: %d', remoteKey);
+		var command = 0;
+		switch (remoteKey) {
+			case Characteristic.VolumeSelector.INCREMENT:
+			command = Openwebif.RemoteKey.INCREMENT;
+			break;
+			case Characteristic.VolumeSelector.DECREMENT:
+			command = Openwebif.RemoteKey.DECREMENT;
+			break;
+		}
+		this.openwebif.sendCommand(command,callback);
 	},
 	remoteKeyPress : function(remoteKey, callback) {
 		this.log('webOS - remote key pressed: %d', remoteKey);
@@ -198,6 +217,8 @@ OpenWebifSwitchAccessory.prototype = {
 		}
 		this.openwebif.sendCommand(command,callback);
 	},
+	
+
 
 	getDiscSpace: function (callback) {
 		var me = this;
