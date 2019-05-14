@@ -20,32 +20,9 @@ function OpenWebifSwitchAccessory(log, config) {
 	this.port = config["port"] || 80;
 	this.openwebif = new Openwebif(this.host, this.port, this.log);
 	this.log("openwebif " + this.openwebif);
-	this.checkIntervalSeconds = config["checkIntervalSeconds"] || 120;
-	this.excludeSpeakerService = config["excludeSpeakerService"] || false;
 	this.bouquets = config["bouquets"] || [];
 	var me = this;
-	if (this.checkIntervalSeconds > 0) {
-		setInterval(function () {
-			me.openwebif.getPowerState(function (error, value) {
-				if (error) {
-
-				} else {
-					me.tvService.setCharacteristic(Characteristic.Active, value);
-				}
-			});
-			if (!me.excludeSpeakerService){
-				me.openwebif.getVolumeAndMute(function (error,characteristicValue, mute) {
-					if (error) {
-
-					} else {
-						me.speakerService.setCharacteristic(Characteristic.Volume, characteristicValue);
-						me.speakerService.setCharacteristic(Characteristic.Mute, mute);
-					}
-				});
-			}
-		}, me.checkIntervalSeconds * 1000);
-
-	}
+	
 }
 
 OpenWebifSwitchAccessory.prototype = {
