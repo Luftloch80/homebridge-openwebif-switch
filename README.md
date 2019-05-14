@@ -18,6 +18,7 @@ Original: https://github.com/alex224/homebridge-openwebif-switch
             "accessory": "OpenWebifSwitch",
             "name": "Receiver Standby",
             "host": "vusolo2",
+            "bouquets": [],
             <i>"port": 80,</i>
         }
     ]
